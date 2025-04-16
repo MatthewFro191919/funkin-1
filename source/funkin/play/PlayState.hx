@@ -2494,15 +2494,16 @@ class PlayState extends MusicBeatSubState
          #if FEATURE_GHOST_TAPPING
             // Perform a ghost miss (anti-spam).
             // nope
+ 
+            // Play the strumline animation.
+            playerStrumline.playPress(input.noteDirection);
+            trace('Score: ${songScore}');
          #else
             // Perform a ghost miss (anti-spam).
             ghostNoteMiss(input.noteDirection, notesInRange.length > 0);
+            playerStrumline.playPress(input.noteDirection);
+            trace('PENALTY Score: ${songScore}');
          #end
- 
-         // Play the strumline animation.
-         playerStrumline.playPress(input.noteDirection);
-         trace('PENALTY Score: ${songScore}');
-         trace('Score: ${songScore}');
       }
     else
     {
